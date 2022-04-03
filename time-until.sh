@@ -4,7 +4,7 @@
 #  for computing the time between now and some future time and date ($fdt)
 
 # use zenity forms dialog to determine a future date and time ($fdt)
-fdt=$(zenity --forms --title="Your input is important to us"\
+fdt=$(zenity --forms --title="Time Until"\
 	--width=350\
 	--text="please select a time and date"\
 	--add-entry="time"\
@@ -65,12 +65,20 @@ while [ $secdiff -ge $secpermin ]; do
 done
 
 # the time between now and $fdt is therefore:
-#		$years years
+#		$years years	
 #		$days days
 #		$hours hours
 #		and $minutes minutes;
-# present this information in a zenity --info dialog
-zenity --width=150 --title="$fdt is in" --info\
-	--text="$(echo "$years year(s),\n $days day(s),\n $hours hour(s),\n and $minutes minute(s).")"\
+# present this information in a zenity --info dialog 
+zenity --width=200 --title="Time Until" --info\
+	--text="<span size='large' weight='bold'>$fdt</span> is:\ 
+		<span size='xx-large' weight='bold' color='#005766'>$years</span> year(s),\
+
+		<span size='xx-large' weight='bold' color='#008299'>$days</span> day(s),\
+
+		<span size='xx-large' weight='bold' color='#00ccf1'>$hours</span> hour(s), and\
+
+		<span size='xx-large' weight='bold' color='#80ecff'>$minutes</span> minute(s)\
+
+from now"\
 	--ok-label="thank you"
- 
