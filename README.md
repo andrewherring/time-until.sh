@@ -26,37 +26,34 @@ At the initial prompt, `time` values in both 12hr and 24hr formats are accepted:
 
 ### Usage
 There are two primary methods for obtaining and using `time-until.sh`:
-1. Clone the repository into `dirname` on your local machine:
 
-	```
-	cd dirname
-	git clone https://github.com/andrewherring/time-until.sh.git
-	```
+**Method 1:** Clone the repository into `dirname` on your local machine:
+```bash
+cd dirname
+git clone https://github.com/andrewherring/time-until.sh.git
+```
 Depending on the configuration of `git` on your local machine, you may also need to enable execution:
-
-	```
-	chmod u+x ./time-until/time-until.sh
-	```
+```bash
+chmod u+x ./time-until/time-until.sh
+```
 Execute the script:
+```bash
+./time-until/time-until.sh
+```
 
-	```
-	./time-until/time-until.sh
-	```
-2. Download the raw script:
-
-	```
-	wget https://raw.githubusercontent.com/andrewherring/time-until.sh/master/time-until.sh
-	```
-	Enable execution:
+**Method 2:** Download the raw script:
+```bash
+wget https://raw.githubusercontent.com/andrewherring/time-until.sh/master/time-until.sh
+```
+Enable execution:
+```bash
+chmod u+x time-until.sh
+```
+Execute:
 	
-	```
-	chmod u+x time-until.sh
-	```
-	Execute:
-	
-	```
-	./time-until.sh
-	```
+```bash
+./time-until.sh
+```
 	
 ### Bugs
 **WARNING:** this script does not take leap years into account! Briefly, both the future date and time (`$fdt`) and the present are given as the number of seconds since 1 January, 1970. The difference between these two time points is then carried through as the difference of these two numbers of seconds (`$secdiff` on line 15 of `time-until.sh`). The issue is then that the script assumes (in line 19) that there are always 365 days per year---a false assumption during a leap year. 
