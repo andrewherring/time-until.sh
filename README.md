@@ -56,7 +56,17 @@ Execute:
 ```
 	
 ### Bugs
-**WARNING:** this script does not take leap years into account! Briefly, both the future date and time (`$fdt`) and the present are given as the number of seconds since 1 January, 1970. The difference between these two time points is then carried through as the difference of these two numbers of seconds (`$secdiff` on line 15 of `time-until.sh`). The issue is then that the script assumes (in line 19) that there are always 365 days per year---a false assumption during a leap year. 
+**WARNING:** this script does not take leap years into account! 
+
+Briefly, both the future date and time (`$fdt`) and the present are given as the number of seconds since 1 January, 1970 (i.e., each is specified using the format `date +%s`). The difference between these two time points is then carried through as the difference of these two numbers of seconds:
+```bash
+secdiff=$(( $(date +%s --date="$fdt")-$(date +%s) )) # line 15
+```
+The issue is then that the script assumes that there are always 365 days per year:
+```bash
+secperday=$(( $secperyear/365 )) # line 19
+```
+But this assumption is false during a leap year! 
 
 ### To Do
 
@@ -65,3 +75,5 @@ Execute:
 
 ### License
 This project is licensed under the GNU General Public License v3.0 (see `license.txt`).
+
+## Here's something new for ya
