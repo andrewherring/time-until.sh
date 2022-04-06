@@ -75,5 +75,3 @@ But this assumption is false during a leap year!
 
 ### License
 This project is licensed under the GNU General Public License v3.0 (see `license.txt`).
-
-## Here's something new for ya
